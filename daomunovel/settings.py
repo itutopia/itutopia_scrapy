@@ -28,9 +28,9 @@ ITEM_PIPELINES = {
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 # 定义数据库名称
-MONGODB_NAME = 'spider'
-# 定义集合名称?
-MONGODB_DOCNAME = 'daomubiji'
+MONGODB_DB_NAME = 'spider'
+# 定义集合名称
+MONGODB_COLLECTION_NAME = 'daomubiji'
 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)

@@ -28,10 +28,10 @@ class DaomunovelPipeline:
         # 写入mongodb
         host = spider.settings['MONGODB_HOST']
         port = spider.settings['MONGODB_PORT']
-        db_name = spider.settings['MONGODB_NAME']
+        db_name = spider.settings['MONGODB_DB_NAME']
         client = pymongo.MongoClient(host=host, port=port)
         db = client[db_name]
-        collection = db[spider.settings['MONGODB_DOCNAME']]
+        collection = db[spider.settings['MONGODB_COLLECTION_NAME']]
         collection.insert_one(dict(item))
 
         # 写入本项目指定路径
