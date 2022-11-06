@@ -14,17 +14,6 @@ class DaomunovelPipeline:
 
     def process_item(self, item, spider):
 
-        # filename = './novel/{}/{}.txt'.format(
-        #     re.sub(r'[\\\/\:\*\?\"\<\>\|]', '_', item['book_title']),
-        #     re.sub(r'[\\\/\:\*\?\"\<\>\|]', '_', item['chapter_name']),
-        # )
-
-        # 沙海小说
-        # filename = './shahai/{}/{}.txt'.format(
-        #     re.sub(r'[\\\/\:\*\?\"\<\>\|]', '_', item['book_title']),
-        #     re.sub(r'[\\\/\:\*\?\"\<\>\|]', '_', item['chapter_name']),
-        # )
-
         # 写入mongodb
         host = spider.settings['MONGODB_HOST']
         port = spider.settings['MONGODB_PORT']
@@ -34,12 +23,23 @@ class DaomunovelPipeline:
         collection = db[spider.settings['MONGODB_COLLECTION_NAME']]
         collection.insert_one(dict(item))
 
-        # 写入本项目指定路径
-        # 藏海花
-        filename = './zanghaihua/{}/{}.txt'.format(
+        # filename = './novel/{}/{}.txt'.format(
+        #     re.sub(r'[\\\/\:\*\?\"\<\>\|]', '_', item['book_title']),
+        #     re.sub(r'[\\\/\:\*\?\"\<\>\|]', '_', item['chapter_name']),
+        # )
+
+        # 沙海小说
+        filename = './shahai/{}/{}.txt'.format(
             re.sub(r'[\\\/\:\*\?\"\<\>\|]', '_', item['book_title']),
             re.sub(r'[\\\/\:\*\?\"\<\>\|]', '_', item['chapter_name']),
         )
+
+        # 写入本项目指定路径
+        # 藏海花
+        # filename = './zanghaihua/{}/{}.txt'.format(
+        #     re.sub(r'[\\\/\:\*\?\"\<\>\|]', '_', item['book_title']),
+        #     re.sub(r'[\\\/\:\*\?\"\<\>\|]', '_', item['chapter_name']),
+        # )
 
         print('正在写入')
 
